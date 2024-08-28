@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="thanks.css">
+    <title>Glam Yarn - Thank You</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f7f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f5c6c6;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: 'Alex Brush', cursive;
+            color: #6a1b2d;
+            font-size: 40px;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .thank-you-message p {
+            color: #6a1b2d;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #6a1b2d;
+            text-align: center;
+            padding: 20px;
+            color: #f9f7f8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thank You!</h1>
+    </header>
+    
+    <main>
+        <section class="thank-you-message">
+            <p>Thank you for your purchase! Your order has been successfully completed.</p>
+            <p id="order-details"></p>
+            <p>We will contact you soon with the details of your order.</p>
+            <p>If you have any questions or need further assistance, feel free to <a href="mailto:glamyarn607@gmail.com">email us</a>.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Glam Yarn. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the stored data from localStorage
+            const orderData = JSON.parse(localStorage.getItem('orderData'));
+
+            if (orderData) {
+                // Display the order data on the "Thank You" page
+                const orderDetails = `
+                    <p><strong>Name:</strong> ${orderData.name}</p>
+                    <p><strong>Phone:</strong> ${orderData.phone}</p>
+                    <p><strong>Article:</strong> ${orderData.articleName}</p>
+                    <p><strong>Price:</strong> ${orderData.price} DA</p>
+                    <p><strong>Location:</strong> ${orderData.location}</p>
+                    <p><strong>Payment Method:</strong> ${orderData.payment}</p>
+                `;
+
+                document.getElementById('order-details').innerHTML = orderDetails;
+
+                // Optionally, clear the stored data
+                localStorage.removeItem('orderData');
+            }
+        });
+    </script>
+</body>
+</html>
